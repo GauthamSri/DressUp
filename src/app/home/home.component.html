@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-2">
+        <label>Temperature</label>
+        <div *ngFor="let temp of temps;let first = index">
+            <label>
+            <input type="radio" name="radiogroup" [checked]="first===0"  [value]="temp.id" (change)="onSelectionChange(temp)">
+            {{temp.display}}
+            </label>
+        </div>
+  </div>
+
+    <div class="row col-sm-10">
+        <div class="form-group col-sm-2">
+            <label for="cmds"><h4>Commands</h4></label> 
+             </div>
+    <div class="form-group col-sm-8">
+        <div class="alert alert-danger" *ngIf="!isInputValid" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Enter a valid Input (Comma separated commands)
+        </div>
+        <input  type="text" name="name" [(ngModel)]="cmds">
+    </div>
+    <div class="form-group col-sm-2">
+        <button type="submit" class="btn btn-primary " (click)="process()">Process</button>
+    </div>
+    
+   </div>
+
+  </div>
+
+     <div class="row ">
+          <br> 
+     </div>
+        <div class="row ">
+              <span class="label col-sm-2">Result : </span>
+              <span class="label col-sm-10">{{processedResult}}</span>     
+
+        </div>
+
+   <div class="row ">
+          <br> 
+     </div>
+    
+
+</div>
